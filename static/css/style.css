@@ -3,7 +3,7 @@ body{
     background-size: cover;
 }
 .jumbotron{
-    background-color:rgba(123, 130, 138, 0.527);
+    background-color:rgba(102, 103, 104, 0.527);
 }
 
 .table{
@@ -12,6 +12,7 @@ body{
 	width: 95%;
 	margin: auto;
     text-align: center;
+    font-size: 20px;
     border-color: black;
     box-shadow: 10px 10px 15px 6px #525658;
 }
@@ -22,7 +23,7 @@ body{
 }
 
 .table tr:nth-child(even){
-	background: #7d8796
+	background: #898e96
 }
 
 th {
@@ -46,7 +47,7 @@ th {
     margin-left: auto;
     margin-right: auto;
     color: whitesmoke;
-    box-shadow: 1px 1px 4px 4px whitesmoke;
+    box-shadow: 1px 1px 4px 4px rgb(170, 169, 169);
     border-radius: 6px;
 }
 form{
