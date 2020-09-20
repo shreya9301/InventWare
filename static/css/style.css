@@ -30,17 +30,6 @@ th {
   color: white;
 }
 
-.display_table{
-    border-bottom-right-radius: 20px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-	border-bottom-left-radius: 20px;
-	padding-left: 5px;
-	padding-right: 5px;
-	padding-bottom: 20px;
-	box-shadow: 10px 10px 15px 6px #7b95ac;
-}
-
 .header {
     font-family: helvetica;
     color: #0a1d2e;
