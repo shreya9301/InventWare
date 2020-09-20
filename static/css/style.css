@@ -1,0 +1,66 @@
+body{
+    background-image: url(https://images.unsplash.com/photo-1513941025786-ed97f054ebba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80);
+    background-size: cover;
+}
+.jumbotron{
+    background-color:rgba(123, 130, 138, 0.527);
+}
+
+.table{
+	font-size: 13px;
+	text-align: center;
+	width: 95%;
+	margin: auto;
+    text-align: center;
+    border-color: black;
+    box-shadow: 10px 10px 15px 6px #525658;
+}
+
+/*Make alternating colors for the table rows*/
+.table tr:nth-child(odd){
+	background: #dee4ee
+}
+
+.table tr:nth-child(even){
+	background: #7d8796
+}
+
+th {
+  background-color: #24272c;
+  color: white;
+}
+
+.display_table{
+    border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 20px;
+	box-shadow: 10px 10px 15px 6px #7b95ac;
+}
+
+.header {
+    font-family: helvetica;
+    color: #0a1d2e;
+    font-size: 50px;
+    text-align: center;
+    width: 100%;
+    text-shadow: 6px 6px 6px #c9c6c6;
+    display: block;
+    font-weight: bolder;
+}
+
+.filter_btn{
+    background-color: rgb(71, 79, 88);
+    margin-left: auto;
+    margin-right: auto;
+    color: whitesmoke;
+    box-shadow: 1px 1px 4px 4px whitesmoke;
+    border-radius: 6px;
+}
+form{
+    margin-left: auto;
+    margin-right: auto;
+}
