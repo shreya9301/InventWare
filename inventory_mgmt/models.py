@@ -1,11 +1,6 @@
 from django.db import models
 
 # Create your models here.
-category_choice = (
-		('Food', 'Food'),
-		('Healthcare', 'Healthcare'),
-		('Textiles', 'Textiles'),
-	)
 
 class Category(models.Model):
 	name = models.CharField(max_length=50, blank=True, null=True)
@@ -27,6 +22,6 @@ class Stock(models.Model):
 	created_by = models.CharField(max_length=50, blank=True, null=True)
 	reorder_level = models.IntegerField(default='0', blank=True, null=True)
 	last_updated = models.DateTimeField(auto_now_add=False, auto_now=True)
-	export_to_CSV = models.BooleanField(blank=False,null=True)
+	timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 	def __str__(self):
 		return self.item_name+' '+str(self.quantity)

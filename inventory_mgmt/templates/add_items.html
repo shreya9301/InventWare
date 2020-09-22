@@ -14,11 +14,13 @@
 <main role="main" class="container" style='margin-top:10px;'>
   <div class="jumbotron">
       <h1 class="header"><center>ADD STOCKS INTO THE INVENTORY</center></h1><br><br>
-      <form method='POST' action=''>{% csrf_token %}
-		    {{form|crispy}}
-        <br>
-        <input type="submit" id="sub_button" value='Save'/>
-      </form>
+      <div class='enhance_form'>
+        <form method='POST' action=''>{% csrf_token %}
+          {{form|crispy}}
+          <br>
+          <input type="submit" class='filter_btn' value='Save'/>
+        </form>
+      </div>
   </div>
 </main> 
   <footer class="bg-dark text-light position-absolute fixed-bottom">

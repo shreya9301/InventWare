@@ -21,17 +21,24 @@
   </head>
   <body>
     {% include 'navbar.html'%}
-
     <main role="main" class="container" style="margin-top: 10px">
+      {% if messages %}
+        <ul class="messages">
+               {% for message in messages %}
+                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+               {% endfor %}
+        </ul>
+      {% endif %}
       <div class="jumbotron">
         <div class="header">{{header}}</div>
         <br />
-        <form method="POST" action="">
-          {% csrf_token %} {{form|crispy}}<br />
-          <input type="submit" class="filter_btn" value="APPLY" />
-        </form>
+        <center><div class="enhance_form">
+          <form method="POST" action="">
+            {% csrf_token %} {{form|crispy}}<br />
+            <center><input type="submit" class="filter_btn my-2" value="APPLY" /></center>
+          </form>
+        </div></center>
         <br />
-        <center><h4 style='color:green;'><strong>If you want to update the existing records , click on the Item Name from the table </strong></h4></center>
         <table class="table">
           <thead>
             <tr>
@@ -39,6 +46,8 @@
               <th>CATEGORY</th>
               <th>ITEM NAME</th>
               <th>QUANTITY IN STORE</th>
+              <th>TIMESTAMP</th>
+              <th>LAST UPDATED</th>
               <th>DELETE</th>
             </tr>
           </thead>
@@ -48,10 +57,13 @@
             <td><b>{{instance.category}}</b></td>
             <td><b><a href="{% url 'update_items' instance.id %}" style='color:darkblue;'>{{instance.item_name}}</b></a></td>
             <td><b>{{instance.quantity}}</b></td>
+            <td><b>{{instance.timestamp}}</b></td>
+            <td><b>{{instance.last_updated}}</b></td>
             <td><a href="{% url 'delete_items' instance.id %}"><i class="fa fa-trash" aria-hidden="true" style='color:#a81d13;'></i></a></td>
           </tr>
           {% endfor %}
         </table>
+        <center><h5 style='color:whitesmoke;'><em>Note : If you want to update the existing records , click on the Item Name from the table </em></h5></center>
       </div>
     </main>
     <script

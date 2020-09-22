@@ -1,9 +1,9 @@
 body{
-    background-image: url(https://images.unsplash.com/photo-1513941025786-ed97f054ebba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80);
+    background-image: url(https://s3.amazonaws.com/wboc-digital/production/sites/wboc/wp-content/uploads/2015/01/18130834/Grey-website-background.png);
     background-size: cover;
 }
 .jumbotron{
-    background-color:rgba(102, 103, 104, 0.527);
+    background-color:rgba(172, 176, 180, 0.527);
 }
 
 .table{
@@ -12,7 +12,7 @@ body{
 	width: 95%;
 	margin: auto;
     text-align: center;
-    font-size: 20px;
+    font-size: 14px;
     border-color: black;
     box-shadow: 10px 10px 15px 6px #525658;
 }
@@ -37,7 +37,7 @@ th {
     font-size: 50px;
     text-align: center;
     width: 100%;
-    text-shadow: 6px 6px 6px #c9c6c6;
+    text-shadow: 4px 4px 4px #a19e9e;
     display: block;
     font-weight: bolder;
 }
@@ -46,11 +46,25 @@ th {
     background-color: rgb(71, 79, 88);
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 5px;
+    width:20%;
     color: whitesmoke;
     box-shadow: 1px 1px 4px 4px rgb(170, 169, 169);
     border-radius: 6px;
 }
-form{
-    margin-left: auto;
-    margin-right: auto;
+
+.enhance_form{
+    background-color:rgb(199, 199, 199);
+    padding-left: 20px;
+    padding-top:5px;
+    width:90%;
+    border-radius: 10px;
+}
+
+.success{
+    list-style: none;
+    background-color: #e73508ec;
+    color: white;
+    box-shadow: 8px 8px 8px #a2a6a7;
+    text-align: center;
 }
