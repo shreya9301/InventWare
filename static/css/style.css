@@ -1,9 +1,6 @@
 body{
-    background-image: url(https://s3.amazonaws.com/wboc-digital/production/sites/wboc/wp-content/uploads/2015/01/18130834/Grey-website-background.png);
+    background-image: url(https://i.pinimg.com/600x315/2d/94/6b/2d946b279100de27427e1a9779eae862.jpg);
     background-size: cover;
-}
-.jumbotron{
-    background-color:rgba(172, 176, 180, 0.527);
 }
 
 .table{
@@ -42,6 +39,16 @@ th {
     font-weight: bolder;
 }
 
+.header1{
+    font-family: helvetica;
+    color: #ebf4fa;
+    font-size: 50px;
+    text-align: center;
+    width: 100%;
+    text-shadow: 4px 4px 4px #111d30;
+    display: block;
+    font-weight: bolder;
+}
 .filter_btn{
     background-color: rgb(71, 79, 88);
     margin-left: auto;
@@ -63,8 +70,8 @@ th {
 
 .success{
     list-style: none;
-    background-color: #e73508ec;
+    background-color: #10da3cec;
     color: white;
-    box-shadow: 8px 8px 8px #a2a6a7;
+    box-shadow: 6px 6px 6px #a2a6a7;
     text-align: center;
 }

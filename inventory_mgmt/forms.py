@@ -33,3 +33,19 @@ class StockUpdateForm(forms.ModelForm):
     class Meta:
       model = Stock
       fields = ['category', 'item_name', 'quantity']         
+
+class IssueForm(forms.ModelForm):
+	class Meta:
+		model = Stock
+		fields = ['issue_quantity', 'issue_to']
+
+
+class ReceiveForm(forms.ModelForm):
+	class Meta:
+		model = Stock
+		fields = ['receive_quantity']      
+
+class ReorderLevelForm(forms.ModelForm):
+	class Meta:
+		model = Stock
+		fields = ['reorder_level']        

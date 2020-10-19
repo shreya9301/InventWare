@@ -46,24 +46,32 @@
               <th>CATEGORY</th>
               <th>ITEM NAME</th>
               <th>QUANTITY IN STORE</th>
+              <th>REORDER LEVEL</th>
               <th>TIMESTAMP</th>
               <th>LAST UPDATED</th>
               <th>DELETE</th>
             </tr>
           </thead>
           {% for instance in queryset %}
-          <tr>
-            <td><b>{{forloop.counter}}</b></td>
-            <td><b>{{instance.category}}</b></td>
-            <td><b><a href="{% url 'update_items' instance.id %}" style='color:darkblue;'>{{instance.item_name}}</b></a></td>
-            <td><b>{{instance.quantity}}</b></td>
-            <td><b>{{instance.timestamp}}</b></td>
-            <td><b>{{instance.last_updated}}</b></td>
-            <td><a href="{% url 'delete_items' instance.id %}"><i class="fa fa-trash" aria-hidden="true" style='color:#a81d13;'></i></a></td>
-          </tr>
+            <tr>
+              <td><b>{{forloop.counter}}</b></td>
+              <td><b>{{instance.category}}</b></td>
+              <td><b><a href="{% url 'update_items' instance.id %}" style='color:darkblue;'>{{instance.item_name}}</b></a></td>
+              <td><b>
+                {% if instance.quantity <= instance.reorder_level %}
+                  <div style="background-color: orange;"><a href="{% url 'stock_detail' instance.id %}">{{instance.quantity}}</a></div>
+                {% else %}
+                  <div><a href="{% url 'stock_detail' instance.id %}" style='color:purple;'>{{instance.quantity}}</a></div>
+                {% endif %}</b>
+              </td>
+              <td><strong><a href="{% url 'reorder_level' instance.id %}" style='color:purple;'>{{instance.reorder_level}}</a></strong></td>
+              <td><b>{{instance.timestamp}}</b></td>
+              <td><b>{{instance.last_updated}}</b></td>
+              <td><a href="{% url 'delete_items' instance.id %}"><i class="fa fa-trash" aria-hidden="true" style='color:#a81d13;'></i></a></td>
+            </tr>
           {% endfor %}
         </table>
-        <center><h5 style='color:whitesmoke;'><em>Note : If you want to update the existing records , click on the Item Name from the table </em></h5></center>
+        <center><h5 style='color:yellow;'><em>Note : If you want to update the existing records , click on the <b>Item Name</b> from the table </em></h5></center>
       </div>
     </main>
     <script
