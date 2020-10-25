@@ -31,47 +31,52 @@
       {% endif %}
       <div class="jumbotron">
         <div class="header">{{header}}</div>
-        <br />
-        <center><div class="enhance_form">
-          <form method="POST" action="">
-            {% csrf_token %} {{form|crispy}}<br />
-            <center><input type="submit" class="filter_btn my-2" value="APPLY" /></center>
-          </form>
-        </div></center>
-        <br />
-        <table class="table">
-          <thead>
-            <tr>
-              <th>SNo.</th>
-              <th>CATEGORY</th>
-              <th>ITEM NAME</th>
-              <th>QUANTITY IN STORE</th>
-              <th>REORDER LEVEL</th>
-              <th>TIMESTAMP</th>
-              <th>LAST UPDATED</th>
-              <th>DELETE</th>
-            </tr>
-          </thead>
-          {% for instance in queryset %}
-            <tr>
-              <td><b>{{forloop.counter}}</b></td>
-              <td><b>{{instance.category}}</b></td>
-              <td><b><a href="{% url 'update_items' instance.id %}" style='color:darkblue;'>{{instance.item_name}}</b></a></td>
-              <td><b>
-                {% if instance.quantity <= instance.reorder_level %}
-                  <div style="background-color: orange;"><a href="{% url 'stock_detail' instance.id %}">{{instance.quantity}}</a></div>
-                {% else %}
-                  <div><a href="{% url 'stock_detail' instance.id %}" style='color:purple;'>{{instance.quantity}}</a></div>
-                {% endif %}</b>
-              </td>
-              <td><strong><a href="{% url 'reorder_level' instance.id %}" style='color:purple;'>{{instance.reorder_level}}</a></strong></td>
-              <td><b>{{instance.timestamp}}</b></td>
-              <td><b>{{instance.last_updated}}</b></td>
-              <td><a href="{% url 'delete_items' instance.id %}"><i class="fa fa-trash" aria-hidden="true" style='color:#a81d13;'></i></a></td>
-            </tr>
-          {% endfor %}
-        </table>
-        <center><h5 style='color:yellow;'><em>Note : If you want to update the existing records , click on the <b>Item Name</b> from the table </em></h5></center>
+        <br><br>
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="enhance">
+                <form method="POST" action="">
+                  {% csrf_token %} {{form|crispy}}<br />
+                  <center><input type="submit" class="mybutton" value="APPLY" /></center>
+                </form>
+              </div>
+          </div>  
+          <div class="col-sm-10">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>SNo.</th>
+                  <th>CATEGORY</th>
+                  <th>ITEM NAME</th>
+                  <th>QUANTITY IN STORE</th>
+                  <th>REORDER LEVEL</th>
+                  <th>TIMESTAMP</th>
+                  <th>LAST UPDATED</th>
+                  <th>DELETE</th>
+                </tr>
+              </thead>
+              {% for instance in queryset %}
+                <tr>
+                  <td><b>{{forloop.counter}}</b></td>
+                  <td><b>{{instance.category}}</b></td>
+                  <td><b><a href="{% url 'update_items' instance.id %}" style='color:darkblue;'>{{instance.item_name}}</b></a></td>
+                  <td><b>
+                    {% if instance.quantity <= instance.reorder_level %}
+                      <div style="background-color: orange;"><a href="{% url 'stock_detail' instance.id %}">{{instance.quantity}}</a></div>
+                    {% else %}
+                      <div><a href="{% url 'stock_detail' instance.id %}" style='color:purple;'>{{instance.quantity}}</a></div>
+                    {% endif %}</b>
+                  </td>
+                  <td><strong><a href="{% url 'reorder_level' instance.id %}" style='color:purple;'>{{instance.reorder_level}}</a></strong></td>
+                  <td><b>{{instance.timestamp}}</b></td>
+                  <td><b>{{instance.last_updated}}</b></td>
+                  <td><a href="{% url 'delete_items' instance.id %}"><i class="fa fa-trash" aria-hidden="true" style='color:#a81d13;'></i></a></td>
+                </tr>
+              {% endfor %}
+            </table>
+            <br />
+            <center><h5 style='color:green;'><em>Note : If you want to update the existing records , click on the <b>Item Name</b> from the table </em></h5></center>
+          </div>  
       </div>
     </main>
     <script

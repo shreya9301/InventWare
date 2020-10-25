@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import HttpResponse
 from django.contrib import messages
+import csv
 from .models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+
 def home(request):
     title='Welcome to Inventware'
     context = {
@@ -28,6 +29,28 @@ def list_item(request):
 		queryset = Stock.objects.filter(
 										item_name__icontains=form['item_name'].value()
 										)	
+		if form['export_to_CSV'].value() == True:
+			response = HttpResponse(content_type='text/csv')
+			response['Content-Disposition'] = 'attachment; filename="Stock List.csv"'
+			writer = csv.writer(response)
+			writer.writerow(
+				['CATEGORY', 
+				'ITEM NAME',
+				'QUANTITY', 
+				'REORDER LEVEL', 
+				'TIMESTAMP',  
+				'LAST UPDATED'])
+			instance = queryset
+			for stock in instance:
+				writer.writerow(
+				[stock.category, 
+				stock.item_name, 
+				stock.quantity,  
+				stock.reorder_level,
+				stock.timestamp,
+				stock.last_updated])
+			return response
+								
 		context = {
 		"form": form,
 		"header": header,
@@ -90,9 +113,19 @@ def issue_items(request, pk):
 		instance.issue_by = str(request.user)
 		messages.success(request, "Successfully Issued ! " + str(instance.quantity) + " " + str(instance.item_name) + "s now left in Store")
 		instance.save()
+		issue_history = StockHistory(
+		id = instance.id, 
+		last_updated = instance.last_updated,
+		category_id = instance.category_id,
+		item_name = instance.item_name, 
+		quantity = instance.quantity, 
+		issue_to = instance.issue_to, 
+		issue_by = instance.issue_by, 
+		issue_quantity = instance.issue_quantity, 
+		)
+		issue_history.save()
 
-		return redirect('/stock_detail/'+str(instance.id))
-		# return HttpResponseRedirect(instance.get_absolute_url())
+	return redirect('/stock_detail/'+str(instance.id))
 
 	context = {
 		"title": 'Issue ' + str(queryset.item_name),
@@ -112,14 +145,22 @@ def receive_items(request, pk):
 		instance.quantity += instance.receive_quantity
 		instance.save()
 		messages.success(request, "Successfully Recieved ! " + str(instance.quantity) + " " + str(instance.item_name)+"s now in Store")
-
+		receive_history = StockHistory(
+		id = instance.id, 
+		last_updated = instance.last_updated,
+		category_id = instance.category_id,
+		item_name = instance.item_name, 
+		quantity = instance.quantity, 
+		receive_quantity = instance.receive_quantity, 
+		receive_by = instance.receive_by
+		)
+		receive_history.save()
 		return redirect('/stock_detail/'+str(instance.id))
-		# return HttpResponseRedirect(instance.get_absolute_url())
 	context = {
 			"title": 'Reaceive ' + str(queryset.item_name),
 			"instance": queryset,
 			"form": form,
-			"username": 'Receive By: ' + str(request.user),
+			"username": 'Received By: ' + str(request.user),
 		}
 	return render(request, "add_items.html", context)
 
@@ -137,3 +178,56 @@ def reorder_level(request, pk):
 			"form": form,
 		}
 	return render(request, "add_items.html", context)
+
+@login_required
+def list_history(request):
+	header = 'LIST OF ITEMS'
+	queryset = StockHistory.objects.all()
+	form = StockSearchForm(request.POST or None)
+	context = {
+		"header": header,
+		"queryset": queryset,
+		"form" : form,
+	}
+	if request.method == 'POST':
+		category = form['category'].value()
+		queryset = StockHistory.objects.filter(
+								item_name__icontains=form['item_name'].value()
+								)
+		if (category != ''):
+			queryset = queryset.filter(category_id=category)
+		if form['export_to_CSV'].value() == True:
+			response = HttpResponse(content_type='text/csv')
+			response['Content-Disposition'] = 'attachment; filename="Stock History.csv"'
+			writer = csv.writer(response)
+			writer.writerow(
+				['CATEGORY', 
+				'ITEM NAME',
+				'QUANTITY', 
+				'ISSUE QUANTITY', 
+				'RECEIVE QUANTITY', 
+				'RECEIVE BY', 
+				'ISSUE BY', 
+				'LAST UPDATED'])
+			instance = queryset
+			for stock in instance:
+				writer.writerow(
+				[stock.category, 
+				stock.item_name, 
+				stock.quantity, 
+				stock.issue_quantity, 
+				stock.receive_quantity, 
+				stock.receive_by, 
+				stock.issue_by, 
+				stock.last_updated])
+			return response
+
+		context = {
+		"form": form,
+		"header": header,
+		"queryset": queryset,
+	}
+	return render(request, "list_history.html",context)
+
+def walkthrough(request):
+	return render(request,'walkthrough.html')

@@ -1,28 +1,52 @@
-<nav class="navbar navbar-expand-md" style='background-color:#708090; box-shadow: 5px 5px 5px  #f5f5f0;'>
-  <a class="navbar-brand" href="/" style='color:white;'>INVENTWARE</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+<nav
+  class="navbar navbar-expand-md"
+  style="background-color: #708090; box-shadow: 5px 5px 5px #f5f5f0"
+>
+  <a class="navbar-brand" href="/" style="color: white">INVENTWARE</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarCollapse"
+    aria-controls="navbarCollapse"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/" style='color:black;'><b>Home</b> <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/" style="color: black"
+          ><b>Home</b> <span class="sr-only">(current)</span></a
+        >
       </li>
       {% if request.user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" href="/list_item" style='color:black;'><b>List items</b></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/add_items" style='color:black;'><b>Add items</b></a>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/list_item" style="color: black"
+          ><b>List items</b></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/add_items" style="color: black"
+          ><b>Add items</b></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/list_history" style="color: black"><b>List History</b></a>
+      </li>
       {% endif %}
     </ul>
     <ul class="navbar-nav">
-        {% if request.user.is_authenticated %}
-        <li><a href="/accounts/logout"><button class="btn btn-danger">{{ user }} | Logout</button></a></li>
-        {% else %}
-        <li><a href="/accounts/login" style='color:white;'>Login</a></li>
-        {% endif %}
+      {% if request.user.is_authenticated %}
+      <li>
+        <a href="/accounts/logout"
+          ><button class="btn btn-danger">{{ user }} | Logout</button></a
+        >
+      </li>
+      {% else %}
+      <li><a href="/accounts/login" style="color: white">Login</a></li>
+      {% endif %}
     </ul>
   </div>
- </nav>
+</nav>

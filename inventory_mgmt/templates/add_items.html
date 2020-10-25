@@ -12,7 +12,7 @@
 <body>
 {% include 'navbar.html'%}
 <main role="main" class="container" style='margin-top:10px;'>
-  <div class="jumbotron">
+  <center><div class="jumbotron">
       <h1 class="header"><center>ADD STOCKS INTO THE INVENTORY</center></h1><br><br>
       <div class='enhance_form'>
         <form method='POST' action=''>{% csrf_token %}
@@ -21,7 +21,7 @@
           <input type="submit" class='filter_btn' value='Save'/>
         </form>
       </div>
-  </div>
+  </div></center>
 </main> 
   <footer class="bg-dark text-light position-absolute fixed-bottom">
     <p class="text-center py-2 my-0">

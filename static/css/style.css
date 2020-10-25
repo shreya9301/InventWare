@@ -1,5 +1,5 @@
 body{
-    background-image: url(https://i.pinimg.com/600x315/2d/94/6b/2d946b279100de27427e1a9779eae862.jpg);
+    background-image: url(https://img.freepik.com/free-photo/smooth-dark-blue-with-black-vignette-studio-well-use-as-background-business-report-digital-website-template_1258-748.jpg?size=626&ext=jpg);
     background-size: cover;
 }
 
@@ -21,6 +21,12 @@ body{
 
 .table tr:nth-child(even){
 	background: #898e96
+}
+
+.mybutton{
+    width: 100%;
+    background-color:rgb(109, 106, 106);
+    box-shadow: 8px 8px 8px 4px #d3d4d4;
 }
 
 th {
@@ -60,18 +66,14 @@ th {
     border-radius: 6px;
 }
 
-.enhance_form{
-    background-color:rgb(199, 199, 199);
-    padding-left: 20px;
-    padding-top:5px;
-    width:90%;
-    border-radius: 10px;
-}
-
 .success{
     list-style: none;
     background-color: #10da3cec;
     color: white;
     box-shadow: 6px 6px 6px #a2a6a7;
     text-align: center;
+}
+
+.enhance{
+    background-color:rgba(195, 199, 198, 0.945);
 }
