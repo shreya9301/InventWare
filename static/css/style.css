@@ -1,7 +1,14 @@
 body{
-    background-image: url(https://img.freepik.com/free-photo/smooth-dark-blue-with-black-vignette-studio-well-use-as-background-business-report-digital-website-template_1258-748.jpg?size=626&ext=jpg);
+    background-color: #F1F0C0;
     background-size: cover;
 }
+
+.homepage {
+    margin-top: 60px;
+    background-image: url('https://img4.goodfon.com/wallpaper/nbig/5/6c/warehouse-equipment-goods-light-bulbs.jpg');
+    padding: 4px;
+}
+
 
 .table{
 	font-size: 13px;
@@ -10,23 +17,23 @@ body{
 	margin: auto;
     text-align: center;
     font-size: 14px;
-    border-color: black;
-    box-shadow: 10px 10px 15px 6px #525658;
+    border-color: rgb(77, 77, 77);
+    box-shadow: 8px 8px 12px 6px #525658;
 }
 
 /*Make alternating colors for the table rows*/
 .table tr:nth-child(odd){
-	background: #dee4ee
+	background: #B7E5DD
 }
 
 .table tr:nth-child(even){
-	background: #898e96
+	background: #B1BCE6
 }
 
 .mybutton{
     width: 100%;
-    background-color:rgb(109, 106, 106);
-    box-shadow: 8px 8px 8px 4px #d3d4d4;
+    background-color:#F1F0C0;
+    box-shadow: 2px 2px 2px 2px #a68ead;
 }
 
 th {
@@ -36,11 +43,11 @@ th {
 
 .header {
     font-family: helvetica;
-    color: #0a1d2e;
+    color: #9A86A4;
     font-size: 50px;
     text-align: center;
     width: 100%;
-    text-shadow: 4px 4px 4px #a19e9e;
+    text-shadow: 2px 2px 2px #2f2f2f;
     display: block;
     font-weight: bolder;
 }
@@ -51,7 +58,6 @@ th {
     font-size: 50px;
     text-align: center;
     width: 100%;
-    text-shadow: 4px 4px 4px #111d30;
     display: block;
     font-weight: bolder;
 }
@@ -75,5 +81,6 @@ th {
 }
 
 .enhance{
-    background-color:rgba(195, 199, 198, 0.945);
+    border-radius: 4px;
+    background-color:#B1BCE6;
 }

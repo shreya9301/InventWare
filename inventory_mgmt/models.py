@@ -1,6 +1,28 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
+from .manager import CustomUserManager
 # Create your models here.
+
+class User(AbstractUser):
+    
+    #Custom User model to register user using email
+    
+    username = None
+    email = models.EmailField(unique=True, blank=False,error_messages={'unique': "A user with that email already exists!",})
+    org_name = models.TextField(unique=True,blank=True,null=True,max_length=30,default="ABC org")
+
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
+
+    def __str__(self):
+        return self.email
+
+objects = CustomUserManager()
+	
+
+	
+
+
 
 class Category(models.Model):
 	name = models.CharField(max_length=50, blank=True, null=True)
@@ -10,6 +32,7 @@ class Category(models.Model):
 		return self.name
 
 class Stock(models.Model):
+	user = models.ForeignKey(User, related_name='User', on_delete=models.CASCADE,default="")
 	category = models.ForeignKey(Category, on_delete=models.CASCADE,blank=True)
 	item_name = models.CharField(max_length=50, blank=True, null=True)
 	quantity = models.IntegerField(default='0', blank=True, null=True)

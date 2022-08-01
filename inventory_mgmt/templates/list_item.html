@@ -25,23 +25,23 @@
       {% if messages %}
         <ul class="messages">
                {% for message in messages %}
-                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                     <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
                {% endfor %}
         </ul>
       {% endif %}
-      <div class="jumbotron">
-        <div class="header">{{header}}</div>
+
+        <div class="header mt-5">{{header}}</div>
         <br><br>
         <div class="row">
-          <div class="col-sm-2">
-            <div class="enhance">
+          <div class="col-sm-12 col-lg-3 mb-4">
+            <div class="enhance  p-4">
                 <form method="POST" action="">
                   {% csrf_token %} {{form|crispy}}<br />
                   <center><input type="submit" class="mybutton" value="APPLY" /></center>
                 </form>
               </div>
           </div>  
-          <div class="col-sm-10">
+          <div class="col-sm-12 col-lg-9">
             <table class="table">
               <thead>
                 <tr>
@@ -77,7 +77,7 @@
             <br />
             <center><h5 style='color:green;'><em>Note : If you want to update the existing records , click on the <b>Item Name</b> from the table </em></h5></center>
           </div>  
-      </div>
+
     </main>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

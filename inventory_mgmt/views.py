@@ -5,7 +5,7 @@ from django.contrib import messages
 import csv
 from .models import *
 from .forms import *
-from django.contrib.auth.decorators import login_required
+#from django.contrib.auth.decorators import login_required
 
 def home(request):
     title='Welcome to Inventware'
@@ -14,10 +14,10 @@ def home(request):
     }
     return render(request,"home.html",context)
 
-@login_required	
+#@login_required	
 def list_item(request):
 	form = StockSearchForm(request.POST or None)	
-	header = 'CURRENT STOCKS IN THE INVENTORY'
+	header = 'CURRENT STOCK'
 
 	queryset = Stock.objects.all()
 	context = {
@@ -58,7 +58,7 @@ def list_item(request):
 	}								
 	return render(request, "list_item.html", context)
 
-@login_required
+#@login_required
 def add_items(request):
 	form = StockCreateForm(request.POST or None)
 	if request.method == 'POST':
@@ -179,7 +179,7 @@ def reorder_level(request, pk):
 		}
 	return render(request, "add_items.html", context)
 
-@login_required
+#@login_required
 def list_history(request):
 	header = 'LIST OF ITEMS'
 	queryset = StockHistory.objects.all()

@@ -21,6 +21,19 @@
     />
     <title>{{title}}</title>
   </head>
+
+  <style>
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: red;
+      color: white;
+      text-align: center;
+    }
+  </style>
+  
   <body>
     {% include 'navbar.html' %}
     <br><br><br>
@@ -35,9 +48,10 @@
         height: 500px;
       "
     >
-      {% block title %} {% endblock %} {% block content %} {% endblock %}
+      {% block title %} {% endblock %} 
+      {% block content %} {% endblock %}
     </main>
-    <footer class="bg-dark text-light position-absolute fixed-bottom">
+    <footer class="footer">
       <p class="text-center py-2 my-0">
         Copyright &copy; 2020 | Created by-Shreya Singh
       </p>
