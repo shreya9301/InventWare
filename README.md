@@ -1,10 +1,13 @@
 # InventWare
-An efficient Inventory Management System built using Django framework with a good user interface.
+An efficient Inventory Management System built using Django framework. CRUD functionalities are implemented in the web app alongwith alert system(when stock is below threshold set for the particular item).
 
-# Technologies Used
-Django(Version: 3.0)<br>
+# Tools and Technologies Used
+Django<br>
 HTML and CSS <br>
-Bootstrap3<br>
+Bootstrap<br>
+MySQL<br>
 
 # Further Advancements
-Improving the website by adding Dashboard with data-visualization charts and adding reminder system .
+Improving the website by adding Dashboard with data-visualization charts and a chatbot.
+<hr>
+Created by - Shreya Singh and Harshita Jain
